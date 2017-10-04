@@ -29,7 +29,7 @@ public class CambridgeDictionaryCrawler {
     public static void main(String[] args) {
         String[] inputListS = loadDatabase("inputList.dat").toArray(new String[0]);//Loading database
 
-        int numberOfChunks = 10000;
+        int numberOfChunks = 100;
         for (int j = 0; j < numberOfChunks; j++) {
             Deque<Phrase> listOfPhrases = new LinkedList<Phrase>();
             System.out.println("Chunk "+(j+1)+" from " + (int) (j * inputListS.length / numberOfChunks) + " to " + (int) ((j + 1) * inputListS.length / numberOfChunks-1));
