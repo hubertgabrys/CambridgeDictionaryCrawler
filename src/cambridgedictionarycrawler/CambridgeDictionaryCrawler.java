@@ -29,7 +29,7 @@ public class CambridgeDictionaryCrawler {
     public static void main(String[] args) {
         String[] inputListS = loadDatabase("inputList.dat").toArray(new String[0]);//Loading database
 
-        int numberOfChunks = 1000;
+        int numberOfChunks = 10000;
         for (int j = 0; j < numberOfChunks; j++) {
             Deque<Phrase> listOfPhrases = new LinkedList<Phrase>();
             System.out.println("Chunk "+(j+1)+" from " + (int) (j * inputListS.length / numberOfChunks) + " to " + (int) ((j + 1) * inputListS.length / numberOfChunks-1));
@@ -37,6 +37,7 @@ public class CambridgeDictionaryCrawler {
                 listOfPhrases = checkupPhrases(listOfPhrases, inputListS[i], 20);
                 System.out.println("Loaded: " + (i + 1) + "/" + inputListS.length + " " + inputListS[i]);//Information about progress
             }
+            new File("output/").mkdir();
             printOutputFR(listOfPhrases, "output/outputFR_"+(j+1)+".txt");
             System.out.println((j+1)+"% done");
         }
